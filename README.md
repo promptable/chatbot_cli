@@ -83,3 +83,31 @@ python cli.py --user-name Brendan --prompt-file chatbots/interview.txt --chat-na
 python cli.py --user-name Brendan --prompt-file chatbots/interview.txt --chat-id my_interview_971d58d4
 ```
 
+
+## Creating a new bot
+
+1. Create a new instruction file in `chatbots/` like `chatbots/my_new_bot.txt`.
+2. Add your opening line at the top of the file, followed by 6 hashtags `######`.
+
+```txt
+opening_line: Hello, how can I help you?
+######
+<instructions here>
+```
+3. Add your instructions!
+4. Add your final line, typically:
+
+```txt
+{transcript}
+YourBotName:
+```
+
+Note: you must include `{transcript}` so we know where to insert the dialogue history.
+
+4. Run your bot!
+
+```bash
+python cli.py --user-name Brendan --prompt-file chatbots/my_new_bot.txt
+```
+
+Look at some of the examples in `chatbots/` for guidance.
