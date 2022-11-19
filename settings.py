@@ -1,4 +1,16 @@
-"""Settings and secrets for the project."""
+"""Settings and secrets for the project.
+
+Loads secrets from .env.secrets file.
+
+Usage:
+    from settings import Settings
+    cfg = Settings.from_env_file(
+        secrets_file_path,
+        disk_cache_dir="/tmp/disk_cache2",
+        etc..
+    )
+    print(cfg.openai_api_key)
+"""
 import os
 
 import dotenv
@@ -27,33 +39,15 @@ class Settings:
 
 
     @classmethod
-    def from_env_file(cls, env_file: str, **kwargs) -> "Settings":
+    def from_env_file(cls, env_file: str = ".env.secret", **kwargs) -> "Settings":
         """Load secrets from a .env file.
         
         Other kwargs are passed to the Settings constructor.
         """
+        secrets = {}
         cfg = dotenv.dotenv_values(env_file)
         for key, is_required in cls.SECRET_VARIABLES:
-            if is_required and cfg.get(key) is None:
-                raise ValueError(f"Missing required secret variable {key}")
-        return cls(**cfg, **kwargs)
-
-
-if __name__ == "__main__":
-    import argparse
-
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--secrets-file",
-        required=True,
-        help="path to .env.secrets file with env variables",
-    )
-    args = parser.parse_args()
-
-    cfg = Settings.from_env_file(args.secrets_file)
-    print(cfg)
-    print(cfg.openai_api_key)
-    print(cfg.openai_org_id)
-    print(cfg.disk_cache_dir)
-    print(cfg.prompt_history_path)
-    print(cfg.chat_turns_dir)
+            if is_required and not cfg.get(key):
+                raise ValueError(f"Missing required secret variable {key}") 
+            secrets[key.lower()] = cfg.get(key)
+        return cls(**secrets, **kwargs)
