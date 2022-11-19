@@ -17,6 +17,7 @@ An open-ended chat bot for talking about pretty much anything.
 
 > opening_line: Hello {user_name}, how can I help you?
 > \#\#\#\#\#\#
+> 
 > Below is a conversation between a knowledgable, helpful, and witty AI assistant and a user, who has some questions about a topic. The AI assistant is able to answer the user's questions and provide additional information about the topic. The AI assistant is able to keep the conversation focused on the topic and provide relevant information to the user. The closer the AI agent can get to answering the user's questions, the more helpful the AI agent will be to the user.
 > 
 > {transcript}
@@ -26,7 +27,7 @@ An open-ended chat bot for talking about pretty much anything.
 Here `{user_name}` is replaced with the name you pass as a CLI argument. `{transcript}` is replaced with the dialogue history.
 
 
-#### Interview Bot
+### Interview Bot
 
 A chat bot who gives system design interviews!
 
@@ -56,6 +57,16 @@ Requires Python 3.6+. Tested on Mac M1.
 2. Install python requirements.
 
 ```bash
+# Ensure you're using python 3.6+
+python3 --version
+
+# Uses your default python environment
+pip3 install -r requirements.txt
+
+# Alternatively, create a virtual environment (recommended)
+pip3 install virtualenv
+virtualenv .venv --python python3
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
@@ -71,8 +82,4 @@ python cli.py --user-name Brendan --prompt-file chatbots/interview.txt --chat-na
 # Continue where you left off (load history), by passing in the chat_id (prints at top of dialogue)
 python cli.py --user-name Brendan --prompt-file chatbots/interview.txt --chat-id my_interview_971d58d4
 ```
-
-
-
-
 
