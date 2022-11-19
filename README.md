@@ -1,2 +1,29 @@
-# chat_bots
-Customizable chatbots with GPT3 in &lt;500 lines of code
+# Chat Bot CLI
+Dead simple chatbots with GPT3 in &lt;500 lines of code
+
+Fully-customizable, using your own instructions.
+
+## Examples
+
+Personal Assistant
+
+```
+
+```
+
+
+Interview Bot
+
+
+
+## Setup
+
+Requires Python 3.6+
+
+```bash
+
+```
+
+
+
+
