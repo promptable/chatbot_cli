@@ -1,0 +1,6 @@
+click
+diskcache
+python-dotenv
+openai
+prompt_toolkit
+tenacity
