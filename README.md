@@ -1,7 +1,7 @@
 # Chat Bot CLI
 Dead simple chatbots with GPT3 in &lt;500 lines of code
 
-Fully-customizable, using your own instructions.
+Fully-customizable, bring your own instructions.
 
 ## Examples
 
